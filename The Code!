@@ -1,0 +1,48 @@
+#User Input
+low = -1
+while low < 0:
+    low = int(input("Lowest number: "))
+    if low < 0:
+        print("Lowest number must be 0 or greater")
+
+high = -1
+while high <= low:
+    high = int(input("Highest number: "))
+    if high <= low:
+        print("Highest number must be larger than lowest number!")
+print()
+
+#Formatting and Output of the Heading
+biggest_num = len(str(high**2))
+heading = format("+   ", ">" + str(len(str(high+2)))+"s")
+print(heading, end='')
+for h in range(low, high+1):
+    fh = format(str(h), ">" + str(biggest_num+1) + "s")
+    print(fh, "", end="")
+length = high - low
+print()
+line = ( (biggest_num+1)*(length) + length*2 )
+print("-"*line)
+
+#Creating the Rest of the Table
+i2 = low
+
+#Starting with the Side
+for i in range (low, high+1):
+    fi = format(str(i), ">" + str(len(str(high+1))) + "s")
+    print(fi, "| ", end="")
+
+    #Doing the Rest of the Middle
+    for i2 in range(low, high+1):
+        answers = i * i2
+
+        #Formatting It!!!!!
+        if biggest_num > 0:
+            fanswers = format(str(answers), ">"+str(biggest_num+1) + "s")
+            if i2 <= high:
+                i2 += 1
+                print(fanswers, "", end="")
+    
+    #Adding Spacing to Look Pretty
+    print()
+    print()
